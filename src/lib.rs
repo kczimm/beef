@@ -1,0 +1,11 @@
+mod builtins;
+mod completion;
+mod config;
+mod environment;
+mod executor;
+mod history;
+mod io;
+mod job_control;
+mod parser;
+mod prompt;
+mod scripting;
