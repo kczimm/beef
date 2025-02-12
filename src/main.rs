@@ -32,6 +32,9 @@ fn main() {
                 // Parse the command
                 match parser::parse(&input) {
                     Ok(parsed_command) => {
+                        if parsed_command.command.is_empty() {
+                            continue;
+                        }
                         if let Ok(handled) =
                             builtins::execute(&parsed_command.command, &parsed_command.args)
                         {
