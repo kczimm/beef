@@ -44,7 +44,7 @@ fn main() {
                         history.add_command(&input.trim());
 
                         // Execute the command
-                        let execution_result = executor.execute(&parsed_command);
+                        let execution_result = executor.execute(parsed_command);
 
                         // Handle output or errors
                         match execution_result {

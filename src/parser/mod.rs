@@ -2,6 +2,7 @@ mod expansion;
 mod syntax;
 mod tokenizer;
 
+#[derive(Debug)]
 pub struct ParsedCommand {
     pub command: String,
     pub args: Vec<String>,
@@ -44,10 +45,10 @@ pub fn parse(input: &str) -> Result<ParsedCommand, String> {
         return Err("no command provided".to_string());
     }
 
-    let args = parts[1..].iter().map(|s| s.to_string()).collect();
+    let args = parts[1..].iter().map(|s| s.trim().to_string()).collect();
 
     Ok(ParsedCommand {
-        command: parts[0].clone(),
+        command: parts[0].trim().to_string(),
         args,
     })
 }
