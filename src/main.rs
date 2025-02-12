@@ -5,14 +5,15 @@ use beef::{builtins, config, environment, executor, history, job_control, parser
 fn main() {
     // Initialize modules
     let mut config = config::Config::new();
-    let mut environment = environment::Environment::new();
+    let environment = environment::Environment::new();
     let mut history = history::History::new();
     let io_handler = beef::io::IOHandler::new();
-    let mut job_control = job_control::JobControl::new();
-    let executor = executor::Executor::new(&mut environment, &mut job_control);
+    let job_control = job_control::JobControl::new();
+    let executor = executor::Executor::new(environment.clone(), job_control);
 
-    // Load configuration
+    // Load configuration and history before starting
     config.load();
+    history.load(&config);
 
     // Apply environment settings
     environment.apply_config(&config);

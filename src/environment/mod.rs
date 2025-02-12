@@ -1,6 +1,7 @@
 mod path;
 mod variables;
 
+#[derive(Debug, Clone)]
 pub struct Environment;
 
 impl Environment {
