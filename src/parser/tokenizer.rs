@@ -9,6 +9,7 @@ use nom::{
 };
 
 #[derive(Debug, PartialEq)]
+#[allow(dead_code)]
 pub enum Token {
     Word(String),
     Number(i64),
@@ -34,6 +35,7 @@ pub enum Token {
     Plus,
 }
 
+#[allow(dead_code)]
 pub fn tokenize(input: &str) -> IResult<&str, Vec<Token>> {
     many0(preceded(
         multispace0,
