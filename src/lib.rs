@@ -3,7 +3,7 @@
 /// but are executed within the shell itself.
 pub mod builtins;
 
-/// Manages command completion functionality. This pub module provides features
+/// Manages command completion functionality. This module provides features
 /// for auto-completing commands, file paths, or other shell-specific inputs
 /// based on user input.
 pub mod completion;

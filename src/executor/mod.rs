@@ -1,4 +1,4 @@
-use crate::{environment::Environment, job_control::JobControl};
+use crate::{environment::Environment, job_control::JobControl, parser::ParsedCommand};
 
 mod pipeline;
 mod process;
@@ -11,7 +11,7 @@ impl Executor {
         Self
     }
 
-    pub fn execute(&self, parsed_command: &str) -> Result<String, String> {
-        Ok(parsed_command.to_string())
+    pub fn execute(&self, parsed_command: &ParsedCommand) -> Result<String, String> {
+        Ok(parsed_command.command.clone())
     }
 }

@@ -1,6 +1,6 @@
 use std::io::{self, Write};
 
-use beef::{config, environment, executor, history, job_control, parser, prompt};
+use beef::{builtins, config, environment, executor, history, job_control, parser, prompt};
 
 fn main() {
     // Initialize modules
@@ -31,9 +31,12 @@ fn main() {
                 // Parse the command
                 match parser::parse(&input) {
                     Ok(parsed_command) => {
-                        // Check if we should exit the shell
-                        if parsed_command == "exit" {
-                            break;
+                        if let Ok(handled) =
+                            builtins::execute(&parsed_command.command, &parsed_command.args)
+                        {
+                            if handled {
+                                continue;
+                            }
                         }
 
                         // Add to history
